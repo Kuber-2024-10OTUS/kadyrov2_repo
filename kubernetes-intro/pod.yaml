@@ -1,15 +1,18 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: init-test
+  name: init-demo
 spec:
   containers:
   - name: nginx
     image: nginx
     lifecycle:
+      postStart:
+        exec:
+          command: ["/bin/bash", "-c", "sed 's%/usr/share/nginx/html%/homework%' /etc/nginx/conf.d/default.conf"]
       preStop:
         exec:
-          command: ["/bin/sh","-c"," rm /homework/index.html"]
+          command: ["/bin/bash","-c"," rm /homework/index.html"]
     ports:
     - containerPort: 8000
     volumeMounts:

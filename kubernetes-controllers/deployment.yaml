@@ -24,7 +24,7 @@ spec:
         image: nginx
         ports:
         - containerPort: 80
-        livenessProbe:
+        readinessProbe:
           exec:
             command:
             - cat
@@ -35,7 +35,7 @@ spec:
         - name: workdir
           mountPath: /homework
       nodeSelector:
-        homework: true
+        homework: "true"
       initContainers:
       - name: install
         image: busybox:1.28

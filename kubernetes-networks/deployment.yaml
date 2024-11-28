@@ -24,17 +24,17 @@ spec:
         image: nginx
         ports:
         - containerPort: 8080
-        # readinessProbe:
-        #     httpGet:
-        #       path: /init/index.html
-        #       port: 8080
-        #     initialDelaySeconds: 5
-        #     periodSeconds: 3
+        readinessProbe:
+            httpGet:
+              path: /init/index.html
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 3
         volumeMounts:
         - name: workdir
           mountPath: /homework
-      # nodeSelector:
-      #   homework: "true"
+      nodeSelector:
+        homework: "true"
       initContainers:
       - name: install
         image: busybox:1.28

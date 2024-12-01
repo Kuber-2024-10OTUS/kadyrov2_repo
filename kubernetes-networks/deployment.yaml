@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
+  namespace: homework
   labels:
     app: nginx
 spec:
@@ -23,11 +24,12 @@ spec:
       - name: nginx
         image: nginx
         ports:
-        - containerPort: 8080
+        - name: http
+          containerPort: 80
         readinessProbe:
             httpGet:
-              path: /init/index.html
-              port: 8080
+              path: /index.html
+              port: 80
             initialDelaySeconds: 5
             periodSeconds: 3
         volumeMounts:

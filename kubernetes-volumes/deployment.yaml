@@ -1,49 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: kube-app
   namespace: homework
-  labels:
-    app: nginx
 spec:
   replicas: 1
-  strategy:
-    type: RollingUpdate                                   
-    rollingUpdate: 
-      maxUnavailable: 1                                   
-      maxSurge: 1      
   selector:
     matchLabels:
-      app: nginx
+      app: kube-app
   template:
     metadata:
       labels:
-        app: nginx
+        app: kube-app
     spec:
       containers:
-      - name: nginx
-        image: nginx
+      - name: kube-container
+        image: nginx:latest
         ports:
-        - name: http
-          containerPort: 80
+        - containerPort: 80
         readinessProbe:
             httpGet:
               path: /index.html
               port: 80
-            initialDelaySeconds: 50
-            periodSeconds: 100
+            initialDelaySeconds: 5
+            periodSeconds: 10
         volumeMounts:
-          # - name: workdir
-          #   mountPath: /homework
-          - name: config-nginx
-            mountPath: /etc/nginx/nginx.conf
-            subPath: nginx.conf
-          - name: config-text-file
-            mountPath: /homework/conf
           - name: data-volume
             mountPath: /homework
-      nodeSelector:
-        homework: "true"
+          - name: config-nginx
+            mountPath: /etc/nginx/nginx.conf
+            subPath: nginx.conf 
+          - name: config-text-file
+            mountPath: /homework/conf     
       initContainers:
       - name: install
         image: busybox:1.28
@@ -53,14 +41,9 @@ spec:
         - "/init/index.html"
         - http://info.cern.ch
         volumeMounts:
-        # - name: workdir
-        #   mountPath: /init
         - name: data-volume
           mountPath: /init
-      dnsPolicy: Default
       volumes:
-      - name: workdir
-        emptyDir: {}
       - name: config-nginx
         configMap:
           name: nginx-config
@@ -75,4 +58,4 @@ spec:
               path: test.txt
       - name: data-volume
         persistentVolumeClaim:
-         claimName: app-pvc
+          claimName: app-pvc

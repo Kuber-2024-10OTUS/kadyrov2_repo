@@ -36,13 +36,13 @@ data:
           # server_name homework.otus;
           
           location / {
-            root /usr/share/nginx/html;
-            index index.html;
-            # root /homework;
+            # root /usr/share/nginx/html;
             # index index.html;
+            root /homework;
+            index index.html;
           }
 
-          location /conf/file {
+          location /conf/ {
             root /usr/share/nginx/html;
             index index.html;
           }

@@ -23,7 +23,7 @@ spec:
               path: /index.html
               port: 80
             initialDelaySeconds: 5
-            periodSeconds: 10
+            periodSeconds: 100
         volumeMounts:
           - name: data-volume
             mountPath: /homework
@@ -59,3 +59,4 @@ spec:
       - name: data-volume
         persistentVolumeClaim:
           claimName: app-pvc
+           

@@ -1,0 +1,2 @@
+kubectl delete    -f ./pvc.yaml    -f ./deployment.yaml  -f ./svc.yaml   -f ./ingress.yaml   -f ./nginx-config.yaml     -f ./config-text-file.yaml  
+kubectl apply      -f ./pvc.yaml   -f ./deployment.yaml  -f ./svc.yaml    -f ./ingress.yaml   -f ./nginx-config.yaml    -f ./config-text-file.yaml

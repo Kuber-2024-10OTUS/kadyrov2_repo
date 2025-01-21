@@ -1,0 +1,6 @@
+replicaCount: 1
+auth:
+  clientProtocol: plaintext
+  interBrokerProtocol: plaintext
+  allowPlaintextListener: true
+  enableKafkaAuthorization: fals

@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  namespace: homework
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: kube-app
+  template:
+    metadata:
+      labels:
+        app: kube-app
+    spec:
+      serviceAccountName: monitoring
+      containers:
+      - name: kube-container
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+          - containerPort: 80
+        {{- if .Values.readinessProbe.enabled }}
+        readinessProbe:
+          httpGet:
+            path: {{ .Values.readinessProbe.path }}
+            port: {{ .Values.readinessProbe.port }}
+          initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
+        {{- end }}
+        volumeMounts:
+          - name: data-volume
+            mountPath: /homework
+          - name: config-nginx
+            mountPath: /etc/nginx/nginx.conf
+            subPath: nginx.conf 
+          - name: config-text-file
+            mountPath: /homework/conf     
+      initContainers:
+      - name: install
+        image: busybox:1.28
+        command:
+        - wget
+        - "-O"
+        - "/init/index.html"
+        - http://info.cern.ch
+        volumeMounts:
+        - name: data-volume
+          mountPath: /init
+      serviceAccountName: monitoring
+      volumes:
+      - name: config-nginx
+        configMap:
+          name: nginx-config
+          items:
+            - key: nginx.conf
+              path: nginx.conf
+      - name: config-text-file
+        configMap:
+          name: config-text-file
+          items:
+            - key: test.txt
+              path: test.txt
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: app-pvc
+           

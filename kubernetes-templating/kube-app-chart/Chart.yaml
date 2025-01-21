@@ -1,0 +1,5 @@
+apiVersion: v2
+name: kube-app
+description: A Helm chart to deploy Nginx with custom settings
+version: 0.1.0
+appVersion: "1.28"  # Версия Nginx

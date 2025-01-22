@@ -1,0 +1,10 @@
+apiVersion: otus.homework/v1
+kind: MySQL
+metadata:
+  name: example-mysql
+  namespace: {{ .Values.operator.namespace }}
+spec:
+  image: {{ .Values.mysql.image }}
+  database: {{ .Values.mysql.database }}
+  password: {{ .Values.mysql.password }}
+  storage_size: {{ .Values.mysql.storage_size }}

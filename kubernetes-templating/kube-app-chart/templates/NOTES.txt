@@ -1,1 +1,0 @@
-curl -H "Host: homework.otus"  http://192.168.160.204:31313/

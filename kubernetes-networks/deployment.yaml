@@ -35,6 +35,8 @@ spec:
         volumeMounts:
         - name: workdir
           mountPath: /homework
+      spec:
+        serviceAccountName: nginx-ingress-serviceaccount
       nodeSelector:
         node-role: "infra"
       tolerations:

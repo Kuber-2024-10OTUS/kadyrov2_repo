@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: config-text-file
-  namespace: homework
+  namespace: homeworkhelm
 data:
    test.txt: |
     <html>

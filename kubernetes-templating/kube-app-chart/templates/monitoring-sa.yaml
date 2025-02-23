@@ -4,4 +4,4 @@ metadata:
   annotations:
     kubernetes.io/enforce-mountable-secrets: "true"
   name: monitoring
-  namespace: homework
+  namespace: homeworkhelm

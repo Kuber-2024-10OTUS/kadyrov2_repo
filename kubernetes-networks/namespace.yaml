@@ -4,3 +4,10 @@ metadata:
   name: homework
   labels:
     name: homework
+    ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ingress-nginx
+  labels:
+    name: ingress-nginx

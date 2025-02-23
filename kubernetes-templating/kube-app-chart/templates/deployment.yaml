@@ -36,6 +36,13 @@ spec:
             subPath: nginx.conf 
           - name: config-text-file
             mountPath: /homework/conf     
+        tolerations:
+        - key: "node-role"
+          operator: "Equal"
+          value: "infra"
+          effect: "NoSchedule"
+        nodeSelector:
+          node-role: infra
       initContainers:
       - name: install
         image: busybox:1.28

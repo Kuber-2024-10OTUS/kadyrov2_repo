@@ -5,8 +5,8 @@ metadata:
   labels:
     name: homework
 
-     ---
-     
+---
+
 apiVersion: v1
 kind: Namespace
 metadata:

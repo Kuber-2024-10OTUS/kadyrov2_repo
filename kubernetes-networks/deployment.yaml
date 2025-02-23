@@ -37,6 +37,11 @@ spec:
           mountPath: /homework
       nodeSelector:
         node-role: "infra"
+      tolerations:
+      - key: "node-role"
+        operator: "Equal"
+        value: "infra"
+        effect: "NoSchedule"
       initContainers:
       - name: install
         image: busybox:1.28

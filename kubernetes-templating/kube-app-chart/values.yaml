@@ -1,6 +1,6 @@
 # Настройки Namespace
 namespace:
-  name: homework
+  name: homeworkhelm
 
 # Настройки ServiceAccount
 serviceAccount:

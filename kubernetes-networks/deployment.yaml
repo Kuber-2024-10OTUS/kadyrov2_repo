@@ -36,7 +36,7 @@ spec:
         - name: workdir
           mountPath: /homework
       nodeSelector:
-        homework: "true"
+        node-role: "infra"
       initContainers:
       - name: install
         image: busybox:1.28

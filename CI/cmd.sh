@@ -1,1 +1,1 @@
-Docker -v
+echo 'dasdasd'

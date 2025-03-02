@@ -5,8 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the application...'
-                // sh ' chmod +x ./ci/cmd.sh '
-                sh './ci/cmd.sh build'   
+                // sh ' chmod +x ./CI/cmd.sh'
+                sh './CI/cmd.sh test'   
                  
                 // Здесь могут быть команды для сборки вашего приложения, например:
                 // sh 'mvn clean package'
@@ -15,13 +15,12 @@ pipeline {
         
        stage('Test') {
             steps {
-                sh './ci/cmd.sh test'
+                sh './CI/cmd.sh test'
             }
         }
-
         stage('Deploy') {
             steps {
-                sh './ci/cmd.sh deploy'
+                sh './CI/cmd.sh deploy'
             }
         }
 

@@ -12,20 +12,28 @@ pipeline {
                 // sh 'mvn clean package'
             }
         }
+        
         stage('Test') {
-            steps {
-                echo 'Running tests...'
-                // Здесь могут быть команды для запуска тестов, например:
-                // sh 'mvn test'
+                steps {
+                    sh './cmd.sh test'
+                }
             }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying the application...'
-                // Здесь могут быть команды для деплоя вашего приложения, например:
-                // sh 'scp target/myapp.jar user@server:/path/to/deploy'
+            stage('Deploy') {
+                steps {
+                    sh './cmd.sh deploy'
+                }
             }
-        }
+
+        stage('Test') {
+                steps {
+                    sh './cmd.sh test'
+                }
+            }
+            stage('Deploy') {
+                steps {
+                    sh './cmd.sh deploy'
+                }
+            }
     }
 
     post {

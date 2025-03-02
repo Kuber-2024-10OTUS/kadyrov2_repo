@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the application...'
+                // sh ' chmod +x ./ci/cmd.sh'
+                // sh './ci/cmd.sh'   
+                 
+                // Здесь могут быть команды для сборки вашего приложения, например:
+                // sh 'mvn clean package'
+            }
+        }
+        
+       stage('Test') {
+            steps {
+                sh './ci/cmd.sh test'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                sh './ci/cmd.sh deploy'
+            }
+        }
+
+    }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
+}

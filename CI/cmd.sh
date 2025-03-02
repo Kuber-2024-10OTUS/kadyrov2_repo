@@ -23,13 +23,13 @@ function deploy() {
 }
 
 # Основной код
-if [ "$1" == "build" ]; then
-    build
-elif [ "$1" == "test" ]; then
-    test
-elif [ "$1" == "deploy" ]; then
-    deploy
-else
-    echo "Usage: ./cmd.sh [build|test|deploy]"
-    exit 1
-fi
+# if [ "$1" == "build" ]; then
+#     build
+# elif [ "$1" == "test" ]; then
+#     test
+# elif [ "$1" == "deploy" ]; then
+#     deploy
+# else
+#     echo "Usage: ./cmd.sh [build|test|deploy]"
+#     exit 1
+# fi

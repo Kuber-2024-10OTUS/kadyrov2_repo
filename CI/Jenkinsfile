@@ -5,6 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the application...'
+                cmd.sh 
+                
                 // Здесь могут быть команды для сборки вашего приложения, например:
                 // sh 'mvn clean package'
             }

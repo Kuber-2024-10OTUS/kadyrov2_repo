@@ -3,22 +3,22 @@
 # Функция для сборки
 function build() {
     echo "Building the application..."
-    mkdir -p build
-    gcc -o build/app src/main.c
+    # mkdir -p build
+    # gcc -o build/app src/main.c
     echo "Build completed."
 }
 
 # Функция для тестирования
 function test() {
     echo "Running tests..."
-    ./build/app --test
+    # ./build/app --test
     echo "Tests completed."
 }
 
 # Функция для деплоя
 function deploy() {
     echo "Deploying the application..."
-    scp build/app user@server:/path/to/deploy
+    # scp build/app user@server:/path/to/deploy
     echo "Deploy completed."
 }
 

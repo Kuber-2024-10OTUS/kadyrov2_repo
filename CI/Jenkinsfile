@@ -13,27 +13,18 @@ pipeline {
             }
         }
         
-        stage('Test') {
-                steps {
-                    sh './cmd.sh test'
-                }
+       stage('Test') {
+            steps {
+                sh './CI/cmd.sh test'
             }
-            stage('Deploy') {
-                steps {
-                    sh './cmd.sh deploy'
-                }
+        }
+        
+        stage('Deploy') {
+            steps {
+                sh './CI/cmd.sh deploy'
             }
+        }
 
-        stage('Test') {
-                steps {
-                    sh './cmd.sh test'
-                }
-            }
-            stage('Deploy') {
-                steps {
-                    sh './cmd.sh deploy'
-                }
-            }
     }
 
     post {

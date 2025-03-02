@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the application...'
-                 sh ' chmod +x ./cicd/cmd.sh'
+                 sh 'chmod +x ./cicd/cmd.sh'
                 // sh './cicd/cmd.sh'   
                  
                 // Здесь могут быть команды для сборки вашего приложения, например:

@@ -1,0 +1,37 @@
+stages:
+  - module-pipelines
+
+frontend:
+  stage: module-pipelines
+  trigger: # тут указываем, какой сценарий будет запущен, если произошли изменения 
+    include:
+      "/frontend/.gitlab-ci.yml"
+    strategy: depend
+  only: # тут задаём диапазон файлов, изменение которых запускает конвейер фронтенда
+    changes:
+      - frontend/**/*
+
+backend:
+  stage: module-pipelines
+  trigger: # тут указываем, какой сценарий будет запущен, если произошли изменения
+    include:
+      "/backend/.gitlab-ci.yml"
+    strategy: depend
+  only: # тут задаём диапазон файлов, изменение которых запускает конвейер бэкенда
+    changes:
+      - backend/**/*
+
+
+# stages:
+#   - build
+#   - test
+#   - notify
+#   - release
+
+# include:
+#   - local: 'backend/.gitlab-ci.yml'
+#   - local: 'frontend/.gitlab-ci.yml'
+#   - template: Security/SAST.gitlab-ci.yml
+
+# variables:
+#   VERSION: 0.0.${CI_PIPELINE_ID}  

@@ -1,19 +1,19 @@
 pipeline {
     agent any // Выбираем Jenkins агента, на котором будет происходить сборка: нам нужен любой
 
-    triggers {
-        pollSCM('H/5 * * * *') // Запускать будем автоматически по крону примерно раз в 5 минут
-    }
+        triggers {
+            pollSCM('H/5 * * * *') // Запускать будем автоматически по крону примерно раз в 5 минут
+        }
 
-    // tools {
-    //     sudo apt install maven
+        // tools {
+        //     sudo apt install maven
 
-    //     maven 'maven-3.8.1' // Для сборки бэкенда нужен Maven
-    //     // jdk 'jdk16' // И Java Developer Kit нужной версии
-    //     nodejs 'node-16' // А NodeJS нужен для фронта
-    // }
+        //     maven 'maven-3.8.1' // Для сборки бэкенда нужен Maven
+        //     // jdk 'jdk16' // И Java Developer Kit нужной версии
+        //     nodejs 'node-16' // А NodeJS нужен для фронта
+        // }
   
-    sudo apt install maven
+
         stage('Build & Test backend') {
             steps {
                 dir("backend") { // Переходим в папку backend

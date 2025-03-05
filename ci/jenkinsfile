@@ -12,12 +12,12 @@ pipeline {
     // }
 
     stages {
-        // stage('Build & Test backend') {
-        //     steps {
-        //         dir("backend") { // Переходим в папку backend
-        //             sh 'mvn package' // Собираем мавеном бэкенд
-        //         }
-        //     }
+        stage('Build & Test backend') {
+            steps {
+                dir("backend") { // Переходим в папку backend
+                    sh 'mvn package' // Собираем мавеном бэкенд
+                }
+            }
 
         //     post {
         //         success {

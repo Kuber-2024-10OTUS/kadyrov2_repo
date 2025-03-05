@@ -19,12 +19,12 @@ pipeline {
                 }
             }
 
-        //     post {
-        //         success {
-        //             junit 'backend/target/surefire-reports/**/*.xml' // Передадим результаты тестов в Jenkins
-        //         }
-        //     }
-        // }
+            post {
+                success {
+                    junit 'backend/target/surefire-reports/**/*.xml' // Передадим результаты тестов в Jenkins
+                }
+            }
+        }
 
         stage('Build frontend') {
             steps {

@@ -18,6 +18,8 @@ pipeline {
         //          sh 'mvn -v'
         //        curl -sL https://deb.nodesource.com/setup_16.x | sudo bash -
                     // sudo apt -y install nodejs
+               // curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
+          //          which yc
         //     }
         // }
 
@@ -36,26 +38,25 @@ pipeline {
         //     }
         // }
 
-        // stage('Build frontend') {
-        //     steps {
-        //         dir("frontend") {
-        //           // Для фронта сначала загрузим все сторонние зависимости
+        stage('Build frontend') {
+            steps {
+                dir("frontend") {
+                  // Для фронта сначала загрузим все сторонние зависимости
                     
-        //             sh 'npm run build' // Запустим сборку
-        //         }
-        //     }
-        // }
+                    sh 'npm run build' // Запустим сборку
+                }
+            }
+        }
         
                 //          "build": "npm run build",
                 //   "deploy": "npm run build && yc storage object upload --bucket-name my-artifacts-bucket --path ./dist/ --key dist/"
   
-        stage('Save artifacts') {
+           stage('Push artifacts') {
            steps {
                   
-
                 withCredentials([string(credentialsId: 'sudo-password', variable: 'SUDO_PASSWORD')]) {
                     sh '''
-                        echo $SUDO_PASSWORD | sudo -S /home/tim13/yandex-cloud/bin/yc -v
+                       echo $SUDO_PASSWORD | sudo -S /home/tim13/yandex-cloud/bin/yc  yc storage object upload --bucket-name  --path ./dist/ --key dist/
                     '''
                 }
             }

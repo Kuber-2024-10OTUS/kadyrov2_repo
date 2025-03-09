@@ -46,8 +46,8 @@ pipeline {
             }
         }
         
-//          "build": "npm run build",
-//   "deploy": "npm run build && yc storage object upload --bucket-name my-artifacts-bucket --path ./dist/ --key dist/"
+                //          "build": "npm run build",
+                //   "deploy": "npm run build && yc storage object upload --bucket-name my-artifacts-bucket --path ./dist/ --key dist/"
 
         stage('Save artifacts') {
             steps {

@@ -54,7 +54,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'sudo-password', variable: 'SUDO_PASSWORD')]) {
                     echo sudo-password
                     sh '''
-                        echo $SUDO_PASSWORD | sudo -S yc --version
+                        echo 1 | sudo -S yc --version
                     '''
                 }
             }

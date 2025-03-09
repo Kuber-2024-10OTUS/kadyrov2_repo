@@ -53,7 +53,7 @@ pipeline {
             steps {
                 //    sh 'curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash'
       
-               sh 'sudo /home/tim13/.yc/bin/yc --version'
+               sh 'yc --version'
             //   sh 'yc storage object upload --tim-bucket  tim-artifacts  --path ./dist/ --key dist/'
                 // archiveArtifacts(artifacts: 'backend/target/sausage-store-0.0.1-SNAPSHOT.jar')
                 // archiveArtifacts(artifacts: 'frontend/dist/frontend/*')

@@ -53,7 +53,7 @@ pipeline {
                   
                 withCredentials([string(credentialsId: 'sudo-password', variable: 'SUDO_PASSWORD')]) {
                     sh '''
-                       echo $SUDO_PASSWORD | sudo -S /home/tim13/yandex-cloud/bin/yc  yc storage object upload --bucket-name  --path ./dist/ --key dist/
+                       echo $SUDO_PASSWORD | sudo -S /home/tim13/yandex-cloud/bin/yc  storage object upload --bucket-name  --path ./dist/ --key dist/
                     '''
                 }
             }

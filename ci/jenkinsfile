@@ -47,13 +47,12 @@ pipeline {
                 }
             }
         
-             
            stage('Push artifacts') {
            steps {
                   
                 withCredentials([string(credentialsId: 'sudo-password', variable: 'SUDO_PASSWORD')]) {
                     sh '''
-                       echo $SUDO_PASSWORD | sudo -S /home/tim13/yandex-cloud/bin/yc  storage object upload --bucket-name  tim-bucket --path ./dist/ --key dist/
+                       echo $SUDO_PASSWORD | sudo -S /home/tim13/yandex-cloud/bin/yc  storage bucket update --bucket-name  tim-bucket --path ./dist/ --key dist/
                     '''
                 }
             }

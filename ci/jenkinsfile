@@ -12,14 +12,12 @@ pipeline {
     // }
 
     stages {
-        stage('install tools' ) {
-            steps {
-                sh ' sudo yum install wget unzip zip -y'
-                sh ' cd /opt'
-                sh 'wget https://mirrors.estointernet.in/apache/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.zip'
-                sh 'unzip apache-maven-3.8.1-bin.zip'
-            }
-        }
+        // stage('install tools' ) {
+        //     steps {
+        //         sh 'sudo apt install maven -y'
+        //          sh 'mvn -v'
+        //     }
+        // }
 
 
         stage('Build & Test backend') {

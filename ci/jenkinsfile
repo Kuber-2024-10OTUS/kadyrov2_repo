@@ -52,7 +52,7 @@ pipeline {
         stage('Save artifacts') {
            steps {
                   
-             
+              sh 'printenv'
 
                 withCredentials([string(credentialsId: 'sudo-password', variable: 'SUDO_PASSWORD')]) {
                     sh '''

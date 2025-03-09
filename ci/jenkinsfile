@@ -54,7 +54,13 @@ pipeline {
                   
                 withCredentials([string(credentialsId: 'sudo-password', variable: 'SUDO_PASSWORD')]) {
                     sh '''
-                      sh 'source /var/lib/jenkins/.bashrc' 
+                      sh 'yc --version' 
+                    '''
+                }
+                 withCredentials([string(credentialsId: 'sudo-password', variable: 'SUDO_PASSWORD')]) {
+                    sh '''
+                      sh 'source /var/lib/jenkins/.bashrc'  \
+                      sh 'yc --version' 
                     '''
                 }
             }

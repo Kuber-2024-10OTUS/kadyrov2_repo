@@ -56,7 +56,7 @@ pipeline {
 
                 withCredentials([string(credentialsId: 'sudo-password', variable: 'SUDO_PASSWORD')]) {
                     sh '''
-                      sh 'yc -v' 
+                      sh '/home/tim13/yandex-cloud/bin/yc -v' 
                     '''
                 }
 

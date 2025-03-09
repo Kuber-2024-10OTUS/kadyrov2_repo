@@ -53,6 +53,7 @@ pipeline {
            steps {
                 withCredentials([string(credentialsId: 'sudo-password', variable: 'SUDO_PASSWORD')]) {
                     sh '''
+                        export PATH=$PATH:/home/tim13/.yc/bin \
                         echo $SUDO_PASSWORD | sudo -S /home/tim13/.yc/bin/yc --version
                     '''
                 }

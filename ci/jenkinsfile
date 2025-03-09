@@ -52,8 +52,8 @@ pipeline {
                   
                 withCredentials([string(credentialsId: 'sudo-password', variable: 'SUDO_PASSWORD')]) {
                     sh '''
-                     sudo apt-get update \
-                    sudo apt-get install awscli
+                    echo $SUDO_PASSWORD | sudo -S  sudo apt-get update \
+                 echo $SUDO_PASSWORD | sudo -S    sudo apt-get install awscli
                     '''
 
                     //   echo $SUDO_PASSWORD | sudo -S /home/tim13/yandex-cloud/bin/yc  storage bucket update tim-bucket --path ./dist/ --key dist/

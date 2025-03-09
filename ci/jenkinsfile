@@ -61,7 +61,7 @@ pipeline {
                          echo $SUDO_PASSWORD | sudo -S /home/tim13/yandex-cloud/bin/yc   storage s3api put-object \
                         --bucket tim-bucket \
                         --key /storage/yandex-cloud \
-                        --body /home/tim13/yandex-cloud  \
+                        --body /home/tim13/text.txt  \
                         --metadata "Content-Type=text/plain,Cache-Control=max-age=3600"
                     '''
 

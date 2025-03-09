@@ -49,10 +49,13 @@ pipeline {
                 //          "build": "npm run build",
                 //   "deploy": "npm run build && yc storage object upload --bucket-name my-artifacts-bucket --path ./dist/ --key dist/"
   
-           stage('Save artifacts') {
+        stage('Save artifacts') {
             steps {
-               sh 'curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash'
-               sh '   yc init'
+                   sh 'curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash'
+      
+               sh 'export PATH=$PATH:/home/tim13/.yc/bin'
+               sh 'source ~/.bashrc'
+                      sh '   yc init'
                sh ' yc --version'
             //   sh 'yc storage object upload --tim-bucket  tim-artifacts  --path ./dist/ --key dist/'
                 // archiveArtifacts(artifacts: 'backend/target/sausage-store-0.0.1-SNAPSHOT.jar')

@@ -51,8 +51,13 @@ pipeline {
   
         stage('Save artifacts') {
            steps {
-              sh 'export PATH=$PATH:/home/tim13/.yc/bin ' 
-              sh '/home/tim13/.yc/bin/yc --version'
+                    sh 'ls -la /home/tim13/.yc/bin'
+                withCredentials([string(credentialsId: 'sudo-password', variable: 'SUDO_PASSWORD')]) {
+                    sh '''
+                        export PATH=$PATH:/home/tim13/.yc/bin \
+                        echo $SUDO_PASSWORD | sudo -S /home/tim13/.yc/bin/yc --version
+                    '''
+                }
             }
             // post {
             //     success {

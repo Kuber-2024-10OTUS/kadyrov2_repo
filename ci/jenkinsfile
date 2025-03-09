@@ -52,15 +52,12 @@ pipeline {
         stage('Save artifacts') {
            steps {
                   
-              sh 'printenv'
 
                 withCredentials([string(credentialsId: 'sudo-password', variable: 'SUDO_PASSWORD')]) {
                     sh '''
-                      sh '/home/tim13/yandex-cloud/bin/yc -v' 
+                        echo $SUDO_PASSWORD | sudo -S /home/tim13/yandex-cloud/bin/yc -v
                     '''
                 }
-
-               
             }
             // post {
             //     success {

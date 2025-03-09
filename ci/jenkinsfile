@@ -52,7 +52,7 @@ pipeline {
                   
                 withCredentials([string(credentialsId: 'sudo-password', variable: 'SUDO_PASSWORD')]) {
                     sh '''
-                         yc storage s3api put-object \
+                         echo $SUDO_PASSWORD | sudo -S    yc storage s3api put-object \
                         --bucket tim-bucket \
                         --key /storage/yandex-cloud \
                         --body /home/tim13/yandex-cloud  \

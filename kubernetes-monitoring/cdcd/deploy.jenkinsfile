@@ -49,7 +49,7 @@ pipeline {
             }
         }
 
-        stage('Optional: Delete Deployment') {
+        stage('Delete ') {
             when {
                 expression { params.DELETE_DEPLOY == true }
             }

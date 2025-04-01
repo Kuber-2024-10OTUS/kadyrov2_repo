@@ -5,7 +5,7 @@ pipeline {
         CLUSTER_NAME = 'tim-cluster'
         NAMESPACE = 'default'
         HELM_RELEASE_NAME = 'nginx'
-        HELM_CHART_PATH = './kubernetes-monitoring/cicd/loki/'
+        HELM_CHART_PATH = './kubernetes-monitoring/loki/'
     }
 
     parameters {

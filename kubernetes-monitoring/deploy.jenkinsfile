@@ -40,6 +40,7 @@ pipeline {
             }
             steps {
                 script {
+                    sh " ls -l ./kubernetes-monitoring/loki/"
                     sh """
                         helm upgrade --install ${HELM_RELEASE_NAME} ${HELM_CHART_PATH} \
                             --namespace ${NAMESPACE} \

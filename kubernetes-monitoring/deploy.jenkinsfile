@@ -40,7 +40,8 @@ pipeline {
             }
             steps {
                 script {
-                    sh " ls -l ./kubernetes-monitoring/"
+                    sh "pwd"
+                    sh "ls -l"
                     sh """
                         helm upgrade --install ${HELM_RELEASE_NAME} ${HELM_CHART_PATH} \
                             --namespace ${NAMESPACE} \

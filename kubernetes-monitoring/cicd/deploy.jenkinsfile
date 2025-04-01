@@ -5,10 +5,9 @@ pipeline {
         CLUSTER_NAME = 'tim-cluster'
         NAMESPACE = 'default'
         HELM_RELEASE_NAME = 'nginx'
-        HELM_CHART_PATH = './kubernetes-monitoring/loki/'
+        HELM_CHART_PATH = './kubernetes-monitoring/cicd/loki/'
     }
 
-C:\Users\tim\kadyrov2_repo-2\kubernetes-monitoring\loki
     parameters {
         booleanParam(name: 'DELETE_DEPLOY', defaultValue: false, description: 'Удалить деплой ?')
     }

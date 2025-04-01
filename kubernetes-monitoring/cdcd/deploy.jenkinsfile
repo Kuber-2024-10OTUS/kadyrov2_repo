@@ -34,7 +34,7 @@ pipeline {
             }
         }
 
-        stage('Deploy Nginx with Helm') {
+        stage('Deploy') {
               when {
                 expression { params.DELETE_DEPLOY == false }
             }
